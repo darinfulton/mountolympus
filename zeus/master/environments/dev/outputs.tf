@@ -6,6 +6,10 @@ output "env_name" {
   value = local.env_name
 }
 
+output "vpc_id" {
+  value = module.vpc.vpc_id
+}
+
 output "vpc_public_subnets" {
   value = [module.vpc.network_cidr_blocks["public-1"], module.vpc.network_cidr_blocks["public-2"]]
 }

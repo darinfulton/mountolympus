@@ -31,7 +31,7 @@ module "eks" {
       instance_types = var.eks_managed_node_group_params.default_group.instance_types
       capacity_type  = var.eks_managed_node_group_params.default_group.capacity_type
       labels = {
-        Environment = "test"
+        Environment = var.environment
         GithubRepo  = "terraform-aws-eks"
         GithubOrg   = "terraform-aws-modules"
       }

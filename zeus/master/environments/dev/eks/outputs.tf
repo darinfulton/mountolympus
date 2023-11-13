@@ -1,6 +1,6 @@
-output "eks_cloudwatch_log_group_arn" {
-  value = module.eks.cloudwatch_log_group_arn
-}
+#output "eks_cloudwatch_log_group_arn" {
+# value = module.eks.cloudwatch_log_group_arn
+#}
 output "eks_cluster_arn" {
   value = module.eks.cluster_arn
 }

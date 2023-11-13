@@ -19,7 +19,7 @@ variable "eks_params" {
   description = "EKS Cluster Parameters"
   type = object({
     cluster_endpoint_public_access  = bool
-    cluster_enabled_log_types       = list(string) 
+#    cluster_enabled_log_types       = list(string) 
   })
 }
 

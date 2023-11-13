@@ -27,9 +27,13 @@ module "eks" {
       min_size     = var.eks_managed_node_group_params.default_group.min_size
       max_size     = var.eks_managed_node_group_params.default_group.max_size
       desired_size = var.eks_managed_node_group_params.default_group.desired_size
+      ec2_ssh_key = module.key_pair.key_pair_name
+      source_security_group_ids = [aws_security_group.remote_access.id]
 
       instance_types = var.eks_managed_node_group_params.default_group.instance_types
       capacity_type  = var.eks_managed_node_group_params.default_group.capacity_type
+
+
       labels = {
         Environment = var.environment
         GithubRepo  = "terraform-aws-eks"
@@ -57,5 +61,39 @@ module "eks" {
     sts = {
       client_id = "sts.amazonaws.com"
     }
+  }
+}
+
+resource "tls_private_key" "this" {
+  algorithm = "RSA"
+}
+
+module "key_pair" {
+  source = "terraform-aws-modules/key-pair/aws"
+  version = "~> 2.0"
+
+  key_name = "id_rsa"
+  public_key = trimspace(tls_private_key.this.public_key_openssh)
+  create = false
+}
+resource "aws_security_group" "remote_access" {
+  name_prefix = "${var.env_name}-remote-access"
+  description = "Allow remote SSH access"
+  vpc_id = var.vpc_id
+
+  ingress {
+    description = "SSH access"
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = ["70.171.0.72/32"]
+  }
+
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
   }
 }

@@ -1,7 +1,7 @@
-
 data "aws_availability_zones" "available" {
   state = "available"
 }
+
 
 
 #########################
@@ -67,6 +67,7 @@ module "vpc" {
   enable_nat_gateway = var.vpc_params.enable_nat_gateway
   single_nat_gateway = var.vpc_params.single_nat_gateway
   enable_vpn_gateway = var.vpc_params.enable_vpn_gateway
+
 }
 
 #####################

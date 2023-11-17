@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 output "eks_cloudwatch_log_group_arn" {
   value = module.eks.cloudwatch_log_group_arn
 }
+=======
+#output "eks_cloudwatch_log_group_arn" {
+# value = module.eks.cloudwatch_log_group_arn
+#}
+>>>>>>> 85bfa77a1b1445309449cc9bf77e9ea3deb5a226
 output "eks_cluster_arn" {
   value = module.eks.cluster_arn
 }

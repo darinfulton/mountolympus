@@ -8,6 +8,10 @@ module "vpc" {
   vpc_params = var.vpc_params
   project_name = var.project_name
   env_name = local.env_name
+<<<<<<< HEAD
+=======
+  environment = var.environment
+>>>>>>> 85bfa77a1b1445309449cc9bf77e9ea3deb5a226
 }
 
 module "eks" {
@@ -22,4 +26,8 @@ module "eks" {
   intra_subnets_id = module.vpc.intra_subnets_id
   project_name = var.project_name
   env_name = local.env_name
+<<<<<<< HEAD
+=======
+  environment = var.environment
+>>>>>>> 85bfa77a1b1445309449cc9bf77e9ea3deb5a226
 }

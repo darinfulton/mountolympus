@@ -6,6 +6,13 @@ variable "env_name" {
   type = string
 }
 
+<<<<<<< HEAD
+=======
+variable "environment" {
+  type = string
+}
+
+>>>>>>> 85bfa77a1b1445309449cc9bf77e9ea3deb5a226
 variable "eks_version" {
   type = string
 }
@@ -15,7 +22,11 @@ variable "eks_params" {
   description = "EKS Cluster Parameters"
   type = object({
     cluster_endpoint_public_access  = bool
+<<<<<<< HEAD
     cluster_enabled_log_types       = list(string) 
+=======
+#    cluster_enabled_log_types       = list(string) 
+>>>>>>> 85bfa77a1b1445309449cc9bf77e9ea3deb5a226
   })
 }
 
